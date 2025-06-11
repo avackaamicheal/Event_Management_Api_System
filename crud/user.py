@@ -1,4 +1,4 @@
-from schemas.user import UserCreate
+from schemas.user import UserCreate, UserUpdate
 from database import users
 from models import User as UserModel
 
@@ -23,7 +23,7 @@ class UserCrud:
         return users
     
     @staticmethod
-    def update_user(user_id: int, user_data: UserCreate):
+    def update_user(user_id: int, user_data: UserUpdate):
         user = user_crud.get_user_by_id(user_id)
         if user:
             user.name = user_data.name

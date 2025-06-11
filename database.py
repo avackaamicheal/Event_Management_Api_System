@@ -1,3 +1,4 @@
-from models import User
+from models import User, Event
 
 users: list[User] = []
+events: list[Event] = []

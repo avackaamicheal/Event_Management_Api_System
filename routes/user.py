@@ -15,11 +15,10 @@ def create_user(user_data: UserCreate):
         raise HTTPException(status_code=400, detail=str(e))
 
 
-@user_router.get("/", response_model= User, status_code=status.HTTP_200_OK)
+@user_router.get("/", response_model= list[User], status_code=status.HTTP_200_OK)
 def get_all_users():
     user = user_crud.get_all_users()
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
+    return user
 
 
 @user_router.get("/{user_id}", response_model=User, status_code=status.HTTP_200_OK)

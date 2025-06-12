@@ -1,4 +1,4 @@
-from database import events
+from database import events, speakers
 from models import Event as EventModel
 from schemas.event import EventCreate, EventUpdate
 
@@ -6,13 +6,19 @@ class EventCrud:
 
     @staticmethod
     def create_event(event_data: EventCreate):
+
+        speaker_id = [speaker.id for speaker in speakers]
+        if event_data.speaker_id not in speaker_id:
+            raise ValueError("Invalid speaker ID provided")
+        
         event_id = len(events) + 1
         new_event = EventModel(
             id=event_id,
             title=event_data.title,
             location=event_data.location,
             date=event_data.date,
-            is_open=True
+            is_open=True,
+            speaker_id = event_data.speaker_id
         )
         events.append(new_event)
         return new_event

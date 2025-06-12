@@ -7,7 +7,7 @@ from schemas.event import EventUpdate, EventCreate
 
 class EventService:
     @staticmethod
-    def create_event_service(title: str, location: str, date: date):
+    def create_event_service(title: str, location: str, date: date, speaker_id:int):
         """Business logic for creating an event"""
         # Validate title length
         if len(title) < 5:
@@ -17,7 +17,7 @@ class EventService:
             raise ValueError("Event date must be in the future")
         
         return crud.create_event(
-            EventCreate(title=title, location=location, date=date)
+            EventCreate(title=title, location=location, date=date, speaker_id=speaker_id)
         )
     
 

@@ -9,6 +9,7 @@ class EventBase(BaseModel):
     title: str
     location: str
     date: date
+    speaker_id: int
 
 class EventCreate(EventBase):
     pass

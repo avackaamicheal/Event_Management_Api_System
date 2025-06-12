@@ -19,11 +19,25 @@ class Event:
         id: int,
         title: str,
         location: str,
-        date: date, 
-        is_open: bool = True
+        date: date,
+        speaker_id: int,
+        is_open: bool = True, 
     ):
         self.id = id
         self.title = title
         self.location = location
         self.date = date
         self.is_open = is_open
+        self.speaker_id = speaker_id
+
+
+class Speaker:
+    def __init__(
+        self,
+        id: int,
+        name: str,
+        topic: str
+    ):
+        self.id = id
+        self.name = name
+        self.topic =topic

@@ -14,7 +14,8 @@ async def create_event(event_data: EventCreate):
         return event.create_event_service(
             title=event_data.title,
             location=event_data.location,
-            date=event_data.date
+            date=event_data.date,
+            speaker_id=event_data.speaker_id
         )
     except ValueError as e:
         raise HTTPException(

@@ -1,6 +1,5 @@
 # app/services/event.py
 from crud.event import event_crud as crud
-from models import Event
 from datetime import date
 from schemas.event import EventUpdate, EventCreate
 

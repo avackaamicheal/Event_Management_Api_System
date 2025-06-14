@@ -47,6 +47,8 @@ class RegistrationService:
     @staticmethod
     def get_user_registrations(user_id: int):
         return [r for r in registrations if r.user_id == user_id]
+
+
     
 
 register_service = RegistrationService()

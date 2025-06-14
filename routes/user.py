@@ -1,6 +1,8 @@
+from typing import List
 from fastapi import APIRouter, HTTPException, status
 from schemas.user import UserCreate, User, UserUpdate
 from crud.user import user_crud
+from services.user import user_service
 
 
 user_router = APIRouter()
@@ -15,10 +17,14 @@ def create_user(user_data: UserCreate):
         raise HTTPException(status_code=400, detail=str(e))
 
 
-@user_router.get("/", response_model= list[User], status_code=status.HTTP_200_OK)
+@user_router.get("/", response_model= List[User], status_code=status.HTTP_200_OK)
 def get_all_users():
     user = user_crud.get_all_users()
     return user
+
+@user_router.get("/attended", response_model=List[User], status_code=status.HTTP_200_OK)
+def get_users_who_attended():
+    return user_service.get_users_who_attended()
 
 
 @user_router.get("/{user_id}", response_model=User, status_code=status.HTTP_200_OK)
@@ -51,3 +57,4 @@ def deactivate_user(user_id:int):
         return user
     except ValueError as e:
         raise HTTPException(status_code=404, detail=(e))
+    

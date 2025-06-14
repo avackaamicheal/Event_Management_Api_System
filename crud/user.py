@@ -1,5 +1,5 @@
 from schemas.user import UserCreate, UserUpdate
-from database import users
+from database import users, registrations
 from models import User as UserModel
 
 class UserCrud:
@@ -49,6 +49,7 @@ class UserCrud:
             user.is_active = not user.is_active
             return user
         return None
+
 
 
 
